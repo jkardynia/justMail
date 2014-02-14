@@ -1,6 +1,8 @@
 ﻿language: java
 
 before_script:
+  - mvn install -DskipTests=true
   - npm install karma
 script:
-  - karma start --single-run --browsers PhantomJS test/karma/config/unit.js
+  - mvn test
+#  - karma start --single-run --browsers PhantomJS test/karma/config/unit.js
