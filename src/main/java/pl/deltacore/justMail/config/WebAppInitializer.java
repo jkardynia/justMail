@@ -1,4 +1,4 @@
-package pl.deltacore.main.config;
+package pl.deltacore.justMail.config;
 
 import javax.servlet.Filter;
 

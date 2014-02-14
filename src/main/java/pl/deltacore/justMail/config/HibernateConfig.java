@@ -1,4 +1,4 @@
-package pl.deltacore.main.config;
+package pl.deltacore.justMail.config;
 
 import java.util.Properties;
 
@@ -17,12 +17,10 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import pl.deltacore.main.core.persistence.entity.Product;
-
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:jdbc.properties" })
-@ComponentScan({ "pl.deltacore.main.core.persistence" })
+@ComponentScan({ "pl.deltacore.justMail.core.persistence" })
 public class HibernateConfig {
 
    @Autowired
@@ -32,7 +30,7 @@ public class HibernateConfig {
    public LocalSessionFactoryBean sessionFactory() {
       LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
       sessionFactory.setDataSource(restDataSource());
-      sessionFactory.setPackagesToScan(new String[] { "pl.deltacore.main.core.persistence.repository", "pl.deltacore.main.core.persistence.entity" });
+      sessionFactory.setPackagesToScan(new String[] { "pl.deltacore.justMail.core.persistence.repository", "pl.deltacore.justMail.core.persistence.entity" });
       sessionFactory.setHibernateProperties(hibernateProperties());
 
       return sessionFactory;

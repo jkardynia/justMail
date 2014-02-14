@@ -1,4 +1,4 @@
-package pl.deltacore.main.config;
+package pl.deltacore.justMail.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"pl.deltacore.main.web.controller","pl.deltacore.main.web.domain","pl.deltacore.main.rest.controller"})
+@ComponentScan(basePackages = {"pl.deltacore.justMail.web.controller","pl.deltacore.justMail.web.domain","pl.deltacore.justMail.rest.controller"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
