@@ -2,7 +2,8 @@
 
 before_script:
   - mvn install -DskipTests=true
-  - npm install karma
+  - npm install 
+  - bower install 
 script:
   - mvn test
-#  - karma start --single-run --browsers PhantomJS test/karma/config/unit.js
+  - grunt test

@@ -7,11 +7,20 @@ module.exports = function(config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['ng-scenario'],
+    frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
     files: [
-      'test/e2e/**/*.js'
+      'src/main/webapp/WEB-INF/vendor/angular/angular.js',
+      'src/main/webapp/WEB-INF/vendor/angular-mocks/angular-mocks.js',
+      'src/main/webapp/WEB-INF/vendor/angular-resource/angular-resource.js',
+      'src/main/webapp/WEB-INF/vendor/angular-cookies/angular-cookies.js',
+      'src/main/webapp/WEB-INF/vendor/angular-sanitize/angular-sanitize.js',
+      'src/main/webapp/WEB-INF/vendor/angular-route/angular-route.js',
+      'src/main/webapp/WEB-INF/core/*.js',
+      'src/main/webapp/WEB-INF/core/**/*.js',
+      'src/main/webapp/test/mock/**/*.js',
+      'src/main/webapp/test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -43,12 +52,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false
-
-    // Uncomment the following lines if you are using grunt's server to run the tests
-    // proxies: {
-    //   '/': 'http://localhost:9000/'
-    // },
-    // URL root prevent conflicts with the site root
-    // urlRoot: '_karma_'
   });
 };
