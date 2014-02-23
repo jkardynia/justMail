@@ -1,8 +1,10 @@
 package pl.deltacore.justMail.rest.controller;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import org.junit.Before;
@@ -55,7 +57,8 @@ public class GroupsControllerTest {
 	            get("/groups")
 	                    .accept(MediaType.APPLICATION_JSON))
 	            .andExpect(jsonPath("$.[0].id").value(1))
-	            .andExpect(jsonPath("$.[0].name").value("Grupa1"));
+	            .andExpect(jsonPath("$.[0].name").value("Grupa1"))
+	            .andExpect(jsonPath("$", hasSize(1)));
 	}
 	
 	@Test
@@ -68,5 +71,14 @@ public class GroupsControllerTest {
 	                    .accept(MediaType.APPLICATION_JSON))
 	            .andExpect(jsonPath("$.id").value(1))
 	            .andExpect(jsonPath("$.name").value("Grupa1"));
+	}
+	
+	@Test
+	public void thatCreateNewGroup() throws Exception {
+
+	    this.mockMvc.perform(
+	            put("/groups/?name=Grupa2")
+	                    .accept(MediaType.APPLICATION_JSON))
+	                    .andExpect(status().isCreated());
 	}
 }

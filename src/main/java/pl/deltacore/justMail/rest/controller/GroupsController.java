@@ -43,7 +43,7 @@ public class GroupsController {
     }
 	
 	@RequestMapping(method = RequestMethod.POST, value="/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public void updateGroup(@PathVariable String id, 
     		@RequestParam String name) {
 
