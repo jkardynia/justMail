@@ -13,4 +13,8 @@ public class RestDataFixtures {
 		
 		return groups;
 	}
+	
+	public static GroupResponse getSingleGroup(){
+		return new GroupResponse(1L, "Grupa1");
+	}
 }

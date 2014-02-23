@@ -2,8 +2,7 @@ package pl.deltacore.justMail.rest.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import org.junit.Before;
@@ -55,7 +54,19 @@ public class GroupsControllerTest {
 	    this.mockMvc.perform(
 	            get("/groups")
 	                    .accept(MediaType.APPLICATION_JSON))
-	            .andExpect(jsonPath("$.items['id']").value(1))
-	            .andExpect(jsonPath("$.name").value("grupa1"));
+	            .andExpect(jsonPath("$.[0].id").value(1))
+	            .andExpect(jsonPath("$.[0].name").value("Grupa1"));
+	}
+	
+	@Test
+	public void thatViewSingleGroupRendersCorrectly() throws Exception {
+
+	    when(groupsService.getGroup("1")).thenReturn(RestDataFixtures.getSingleGroup());
+	
+	    this.mockMvc.perform(
+	            get("/groups/1")
+	                    .accept(MediaType.APPLICATION_JSON))
+	            .andExpect(jsonPath("$.id").value(1))
+	            .andExpect(jsonPath("$.name").value("Grupa1"));
 	}
 }
