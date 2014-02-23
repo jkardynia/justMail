@@ -4,3 +4,5 @@
 /src/main/webapp/WEB-INF/vendor
 /node_modules
 /.tmp
+/.project
+/.classpath
