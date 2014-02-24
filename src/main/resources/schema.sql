@@ -1,4 +1,4 @@
-﻿drop table if exists groups;
+drop table if exists groups;
 
 -- Tables
 create table groups (

@@ -17,7 +17,7 @@ public class JpaGroupsRepository extends JpaBaseRepository<Group> implements Gro
 	public List<GroupResponse> getAllGroups() {
 		return sessionFactory
 				.getCurrentSession()
-				.createQuery("select new pl.deltacore.justMail.core.dto.GroupsResponse(g.id, g.name) from Group g")
+				.createQuery("select new pl.deltacore.justMail.core.dto.GroupResponse(g.id, g.name) from Group g")
 				.setReadOnly(true)
 				.list();
 	}
@@ -26,7 +26,7 @@ public class JpaGroupsRepository extends JpaBaseRepository<Group> implements Gro
 	public List<MailTemplateResponse> getMailTemplatesFromGroup(Long id){
 		return sessionFactory
 				.getCurrentSession()
-				.createQuery("select new pl.deltacore.justMail.core.dto.MailTemplatesResponse(mt.id, mt.title, mt.authorName) "
+				.createQuery("select new pl.deltacore.justMail.core.dto.MailTemplateResponse(mt.id, mt.title, mt.authorName) "
 						+ "from Group g, MailTemplate mt "
 						+ "where g.id=" + id)
 				.setReadOnly(true)
