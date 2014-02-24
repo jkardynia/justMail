@@ -25,7 +25,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		registry.addResourceHandler("/**").addResourceLocations("/WEB-INF/");
 	}
 	
 	@Override
@@ -47,7 +47,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
   @Bean
   public ServletContextTemplateResolver templateResolver() {
     ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-    resolver.setPrefix("/WEB-INF/view/");
+    resolver.setPrefix("/WEB-INF/");
     resolver.setSuffix(".html");
     //NB, selecting HTML5 as the template mode.
     resolver.setTemplateMode("HTML5");

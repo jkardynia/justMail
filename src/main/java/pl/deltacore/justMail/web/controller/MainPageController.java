@@ -9,6 +9,6 @@ public class MainPageController {
     @RequestMapping("/")
     public String greeting() {
         
-    	return "/main-page";
+    	return "/index";
     } 
 }  
