@@ -6,4 +6,4 @@ before_script:
   - bower install 
 script:
   - mvn test
-  - grunt test
+  - npm test
