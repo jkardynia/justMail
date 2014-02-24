@@ -8,15 +8,20 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import pl.deltacore.justMail.config.CoreConfig;
 import pl.deltacore.justMail.config.HibernateConfig;
 import pl.deltacore.justMail.core.dto.GroupResponse;
+import pl.deltacore.justMail.core.persistence.entity.Group;
 import pl.deltacore.justMail.core.persistence.repository.api.GroupsRepository;
 import pl.deltacore.justMail.core.service.api.GroupsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CoreConfig.class, HibernateConfig.class})
+@TransactionConfiguration(defaultRollback = true)
+@Transactional
 public class GroupsServiceIntegrationTest {
 
 	@Autowired
@@ -25,21 +30,17 @@ public class GroupsServiceIntegrationTest {
 	@Autowired
 	GroupsRepository groupsRepository;
 	
-	@Before
-	public void setup() {
-	}
-	
 	@Test
 	public void thatGroupIsCreated() throws Exception {
+		String groupName = "Group-test";
+		
 		// prepare database
-		//begin transaction
-		//Group group = groupsRepository.createGroup("nowa grupa");
+		Long newGroupId = groupsRepository.createGroup(groupName).getId();
 		
 		// test
-		GroupResponse groupRsp = service.getGroup("1");//group.getId().toString());
+		GroupResponse groupRsp = service.getGroup(newGroupId.toString());
 		
-		assertEquals("PizzaHut", groupRsp.name);
+		assertEquals(groupName, groupRsp.name);
 		
-		//rollback transaction
 	}
 }
