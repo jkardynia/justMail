@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="coreApp">
+<html ng-app="core">
 <head>
     <title>justMail</title>
     <meta charset="UTF-8">
@@ -10,27 +10,28 @@
     <div ng-controller="GroupsController as GroupsCtrl">
         
         <form>
-            Add new group: <input type="text" ng-model="GroupsCtrl.groupNew" />
+            Add new group: <input type="text" ng-model="newGroup" />
             <br />
-            <h3>{{GroupsCtrl.groupNew}}</h3>
-            <button ng-click="GroupsCtrl.add()">Add</button>
+            <h3>{{newGroup}}</h3>
+            <button ng-click="add(newGroup)">Add</button>
         </form>
         
         <br />
-        Search: <input type="text" ng-model="groupSearch" />
+        Search: <input type="text" ng-model="searchKeyword" />
         <br />
         <ul>
-            <li ng-repeat="group in GroupsCtrl.groups | filter:groupSearch">{{ group }}</li>
+            <li ng-repeat="group in groups | filter:searchKeyword">{{ group }}</li>
         </ul>
         
     </div>
     
-    <script src="lib/angular.js/angular.js"></script>
-    <script src="lib/angular.js/angular-route.js"></script>
-    <script src="js/coreApp/coreApp.js"></script>
-    <script src="js/coreApp/controllers/GroupsControllers.js"></script>
-    <script src="js/coreApp/directives/directives.js"></script>
-    <script src="js/coreApp/filters/filters.js"></script>
-    <script src="js/coreApp/services/services.js"></script>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-resource/angular-resource.min.js"></script>
+    <script src="vendor/angular-route/angular-route.min.js"></script>
+    <script src="core/core.js"></script>
+    <script src="core/controllers/GroupsController.js"></script>
+    <script src="core/directives/directives.js"></script>
+    <script src="core/filters/filters.js"></script>
+    <script src="core/services/GroupService.js"></script>
 </body>
 </html>
